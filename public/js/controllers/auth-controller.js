@@ -1,16 +1,12 @@
 angular.module('myApp')
-  .controller('authController', [
+  .controller('AuthController', [
     '$scope',
     '$route',
     '$cookies',
-    function($cookies, $scope, $route) {
-
-      var access_token = $cookies.get($route.current.access_token);
-
+    function($scope, $route, $cookies) {
       $cookies.put('access_token', $route.current.access_token);
+      $scope.access_token = $route.current.access_token;
 
-      console.log(access_token);
-
+      // call server to get gists;
     }
-
   ]);

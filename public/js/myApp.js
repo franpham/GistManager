@@ -2,27 +2,24 @@
  * Creation of a modules uses a 2nd array argument to import dependecies
  */
 
-// tell angular you want to use this
+// tell angular you want to use myApp;
 angular.module('myApp', [
   'ngRoute',
   'ngCookies'
-  ]);
-
+]);
 var myApp = angular.module('myApp');
 
 myApp.config(function($routeProvider) {
-  //routes
   $routeProvider
   .when('/', {
     templateUrl : 'views/default.html'
   })
 
-  .when('/books', {
-    templateUrl : 'views/books.html',
-    controller : 'BooksController'
+  .when('/login', {
+    templateUrl : 'views/login.html'
   })
 
-  .when("'/auth/auth_code' + access_token", {
+  .when("/auth", {
     templateUrl : 'views/results.html',
     controller : 'AuthController'
   })
@@ -30,9 +27,7 @@ myApp.config(function($routeProvider) {
   .otherwise({
     templateUrl : 'views/404.html'
   });
-
 })
-
 .run(['$rootScope', function($rootScope) {
 
 }]);
