@@ -4,7 +4,8 @@
 
 // tell angular you want to use this
 angular.module('myApp', [
-  'ngRoute'
+  'ngRoute',
+  'ngCookies'
   ]);
 
 var myApp = angular.module('myApp');
@@ -21,8 +22,8 @@ myApp.config(function($routeProvider) {
     controller : 'BooksController'
   })
 
-  .when('/auth/auth_code', {
-    templateUrl : 'views/default.html',
+  .when("'/auth/auth_code' + access_token", {
+    templateUrl : 'views/results.html',
     controller : 'AuthController'
   })
 

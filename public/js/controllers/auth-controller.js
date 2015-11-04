@@ -1,14 +1,16 @@
 angular.module('myApp')
   .controller('authController', [
     '$scope',
-    '$routeParams',
+    '$route',
     '$cookies',
-    function($cookies, $scope, $routeParams, $cookies) {
+    function($cookies, $scope, $route) {
 
-      $scope.new = '/new';
+      var access_token = $cookies.get($route.current.access_token);
 
-      $cookies.put('access_token', $routeParams.access_token);
+      $cookies.put('access_token', $route.current.access_token);
 
-      console.log($cookies.get('access_token'));
+      console.log(access_token);
+
     }
+
   ]);
