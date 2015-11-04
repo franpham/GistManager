@@ -37,10 +37,6 @@ myApp.config(function($routeProvider) {
       templateUrl : 'views/edit-gist.html',
       controller : 'EditController'
     })
-    .when('/delete/:id', {
-      templateUrl : 'views/delete-gist.html',
-      controller : 'DeleteController'
-    })
     .otherwise({
       templateUrl : 'views/404.html'
     });

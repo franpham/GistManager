@@ -21,17 +21,16 @@ angular.module('myApp')
           });
         },
         createGist : function(json) {
-          return $http.post(GISTURL,
-            { headers : { Authorization : 'token ' + $localStorage.access_token }},
-            { body : json }     // !!!!!!!!!!!!! VERIFY SYNTAX -------------------
+          return $http.post(GISTURL, json,
+            { headers : { Authorization : 'token ' + $localStorage.access_token }}
           );
         },
         editGist: function(id, json) {
-          return $http.patch(GISTURL + id,   // --------- VERIFY patch() method -------
-            { headers : { Authorization : 'token ' + $localStorage.access_token }},
-            { body : json }     // !!!!!!!!!!!!! VERIFY SYNTAX -------------------
+          return $http.patch(GISTURL + id, json,
+            { headers : { Authorization : 'token ' + $localStorage.access_token }}
           );
-        }
+        },
+
       };
     }];
   });

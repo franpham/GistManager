@@ -27,6 +27,8 @@ angular.module('myApp')
       $scope.gist = null;
       GistServer.showGist($route.current.params.id).success(function(gist) {
         $scope.gist = gist;
+        $scope.files = gist.files;
+        $scope.titles = Object.keys(gists.files);
       });
     }
   ]);
@@ -34,10 +36,8 @@ angular.module('myApp')
 angular.module('myApp')
   .controller('CreateController', ['$scope', 'GistServer',
     function($scope, GistServer) {
-      $scope.gist = null;
-      GistServer.createGist().success(function(gist) {
-        $scope.gist = gist;
-      });
+      $scope.gist = {};
+      $scope.method = 'POST';
     }
   ]);
 
@@ -45,18 +45,10 @@ angular.module('myApp')
   .controller('EditController', ['$scope', '$route', 'GistServer',
     function($scope, $route, GistServer) {
       $scope.gist = null;
-      GistServer.editGist($route.current.params.id).success(function(gist) {
+      GistServer.showGist($route.current.params.id).success(function(gist) {
         $scope.gist = gist;
-      });
-    }
-  ]);
-
-angular.module('myApp')
-  .controller('DeleteController', ['$scope', '$route', 'GistServer',
-    function($scope, $route, GistServer) {
-      $scope.result = null;
-      GistServer.deleteGist($route.current.params.id).success(function(result) {
-        $scope.result = result;
+        $scope.files = gist.files;
+        $scope.titles = Object.keys(gists.files);
       });
     }
   ]);

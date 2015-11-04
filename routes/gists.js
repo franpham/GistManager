@@ -3,7 +3,7 @@
 var request = require('request');
 var express = require('express');
 var router = express.Router();
-VAR GITHUB = 'https://api.github.com/gists/';
+var GITHUB = 'https://api.github.com/gists/';
 
 // POST (create) a Gist
 // Step 4: create route to post new object; Bearer Access Token is stored in the header as: Authorization : Bearer access_token
@@ -74,7 +74,7 @@ router.get('/', getAuthBearerToken, (req, res) => {
 
 // DELETE a Gist
 router.delete('/:id', getAuthBearerToken, (req, res) => {
-  request.delete({
+  request.del({
     url : GITHUB + req.params.id,
     headers : { Authorization : 'Bearer ' + req.access_token, 'User-Agent' : 'gist-manager' }
   },

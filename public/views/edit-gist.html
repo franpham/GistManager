@@ -1,0 +1,21 @@
+<div>
+  <h2>
+    Create/ Edit Gist
+  </h2>
+    <form id="editForm", method="POST", action="/gists/{{ gist.id }}">
+      <input type="hidden", name="_method", value= "{{ method }}">
+      <label> Description
+        <input type="text" name="description" value="{{ gist.description }}">
+      </label>
+      <div ng-repeat="(file, index) in files">
+        <label> Filename
+          <input type="text" name="filename" value="{{ filename }}" ng-model="file_{{ index }}">
+        </label>
+        <label> Content
+          <input type="text" name="content" value="{{ gist.content }}">
+        </label>
+      </div>
+      <button type="submit">Update</button>
+    </form>
+  </li>
+</div>
