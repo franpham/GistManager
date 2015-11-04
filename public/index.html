@@ -2,10 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Angular Tutorial</title>
+  <title>Gist Manager</title>
 </head>
 <body ng-app="myApp">
-
   <ul>
     <li><a ng-href="#/"> Home </a></li>
     <li><a ng-href="#/login"> Login </a></li>
@@ -16,7 +15,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.9/ngStorage.min.js"></script>
 
-  <script src="js/myApp.js"></script>
-  <script src="js/controllers/auth-controller.js"></script>
+  <script src="js/myApp.js"></script><!-- LOAD FIRST! -->
+  <script src="js/controllers.js"></script>
+  <script src="js/providers.js"></script>
 </body>
 </html>

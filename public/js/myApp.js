@@ -11,23 +11,39 @@ var myApp = angular.module('myApp');
 
 myApp.config(function($routeProvider) {
   $routeProvider
-  .when('/', {
-    templateUrl : 'views/default.html'
-  })
-
-  .when('/login', {
-    templateUrl : 'views/login.html'
-  })
-
-  .when("/auth/:access_token", {
-    templateUrl : 'views/results.html',
-    controller : 'AuthController'
-  })
-
-  .otherwise({
-    templateUrl : 'views/404.html'
-  });
+    .when('/', {
+      templateUrl : 'views/default.html'
+    })
+    .when('/login', {
+      templateUrl : 'views/login.html'
+    })
+    .when("/auth/:token", {
+      templateUrl : 'views/auth.html',
+      controller : 'AuthController'
+    })
+    .when('/list', {
+      templateUrl : 'views/list-gists.html',
+      controller : 'ListController'
+    })
+    .when('/show/:id', {
+      templateUrl : 'views/show-gist.html',
+      controller : 'ShowController'
+    })
+    .when('/create', {
+      templateUrl : 'views/edit-gist.html',
+      controller : 'CreateController'
+    })
+    .when('/edit/:id', {
+      templateUrl : 'views/edit-gist.html',
+      controller : 'EditController'
+    })
+    .when('/delete/:id', {
+      templateUrl : 'views/delete-gist.html',
+      controller : 'DeleteController'
+    })
+    .otherwise({
+      templateUrl : 'views/404.html'
+    });
 })
 .run(['$rootScope', function($rootScope) {
-
 }]);
