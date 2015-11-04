@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Tutorial</title>
+</head>
+<body ng-app="myApp">
+
+  <ul>
+    <li><a ng-href="#/"> Home </a></li>
+    <li><a ng-href="#/books"> Books </a></li>
+  </ul>
+
+  <div ng-view></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-route.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-beta.1/angular-animate.min.js"></script>
+
+  <script src="js/myApp.js"></script>
+  <script src="js/controllers/books-controller.js"></script>
+  <script src= "js/factories.js"></script>
+  <script src= "js/filters.js"></script>
+  <script src= "js/services.js"></script>
+  <script src= "js/values.js"></script>
+
+</body>
+</html>
