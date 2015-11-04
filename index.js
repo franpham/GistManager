@@ -66,15 +66,14 @@ app.get('/auth/github/callback', (req, res) => {
       } else if ( results.error ) {
         console.error(results.error);
         res.status(401).json(results.error);
-      } else { // everything worked
-        // get token
-        //    send token back to client
-        res.json({ access_token : access_token });
+      } else {
+        //get token
+        //   send token back to client
+        res.redirect('/#/auth/auth_code/' + access_token); //access_token
       }
     }
     );
 });
-
 
 /**
  * AuthBearerToken

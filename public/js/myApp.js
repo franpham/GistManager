@@ -21,6 +21,11 @@ myApp.config(function($routeProvider) {
     controller : 'BooksController'
   })
 
+  .when('/auth/auth_code', {
+    templateUrl : 'views/default.html',
+    controller : 'AuthController'
+  })
+
   .otherwise({
     templateUrl : 'views/404.html'
   });
