@@ -48,9 +48,8 @@ router.get('/github/callback', (req, res) => {
         console.error(error);
         res.status(401).json(error);
       } else {
-        res.set('Authorization', 'token ' + access_token);
-        res.redirect('/list');    // add access_token to header;
-      }
+        res.redirect('/#/auth/' + access_token);
+      } // REDIRECT TO AN ANGULAR ROUTE!
     }
   );
 });

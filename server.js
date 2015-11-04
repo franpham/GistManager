@@ -19,3 +19,4 @@ app.listen(PORT, function() {
 });
 
 // Step 6: at the Terminal: env $(cat .env | xargs) nodemon server.js \n "| xargs" pipes all lines in .env into 1 line to pass to nodemon;
+// .env cannot contain any comments, else it will not run!
