@@ -2,18 +2,24 @@
   <h2>
     Edit Gist: {{ gist.title }}
   </h2>
+  <!-- Github requires ALL fields to be populated! -->
+  <form name="editGist" ng-submit="editor.editGist(gist.id, location, gist);">
   <label> Description
     <input type="text" name="description" value="{{ gist.description }}" ng-model="gist.description">
   </label>
-  <fieldset><!-- model is a gist object with multiple properties -->
+  <span class="error" ng-show="editGist.description.$error.required">(Required)</span>
+  <fieldset id="fileSet"><!-- model is a gist object with multiple properties -->
     <div ng-repeat="(title, file) in files">
       <label> Filename:
-        <input type="text" name="filename" value="{{ title }}" ng-model="gist.files[{{ $index }}].title">
+        <input type="text" name="filename" value="{{ title }}" ng-model="gist.files[title].title">
       </label>
+      <span class="error" ng-show="editGist.filename.$error.required">(Required)</span>
       <label> Content:
-        <input type="text" name="content" value="{{ file.content }}" ng-model="gist.files[{{ $index }}].content">
+        <input type="text" name="content" value="{{ file.content }}" ng-model="gist.files[title].content">
       </label>
+      <span class="error" ng-show="editGist.content.$error.required">(Required)</span>
     </div>
   </fieldset>
-  <button type="submit" ng-click="editor.editGist(gist.id, gist);">Update Gist</button>
+  <button type="submit">Update Gist</button>
+  </form>
 </div>

@@ -1,0 +1,73 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway);
+@import url(https://fonts.googleapis.com/css?family=PT+Mono);
+/* line 4, stdin */
+html {
+  background-color: #CDD2DB;
+  font-family: Raleway;
+  font-size: 20px; }
+
+.error {
+  font-size: smaller;
+}
+
+/* line 12, stdin */
+.welcome {
+  background-color: #FFF;
+  padding: 100px;
+  width: 25%;
+  text-align: center;
+  margin: auto;
+  margin-left: 30%;
+  margin-top: 5%; }
+
+/* line 21, stdin */
+h2, h1 {
+  text-align: center;
+  font-size: 45px; }
+
+/* line 26, stdin */
+#code {
+  font-family: "PT Mono"; }
+
+/* line 30, stdin */
+.gistLists {
+  background-color: #FFF;
+  width: 50%;
+  text-align: left;
+  margin: 5%;
+  margin-left: 25%;
+  padding-top: 2px;
+  padding-bottom: 2px; }
+
+/* line 39, stdin */
+.showGist {
+  width: 90%; }
+
+/* line 43, stdin */
+.titleAndContent {
+  border: 1px solid #000;
+  background-color: #FFF;
+  opacity: 5;
+  width: 90%;
+  display: block;
+  margin-left: 1%;
+  margin-bottom: 10px;
+  padding: 15px; }
+
+/* line 53, stdin */
+#GistTitle {
+  display: inline-block; }
+
+/* line 56, stdin */
+#descp {
+  border: 1px solid #000;
+  background-color: #FFF;
+  opacity: 5;
+  font-family: "PT Mono";
+  width: auto;
+  padding: 15px;
+  display: inline-block; }
+
+/* line 66, stdin */
+#gist_description {
+  margin-bottom: 0; }

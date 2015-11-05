@@ -2,17 +2,24 @@
   <h2>
     Add A Gist:
   </h2>
-  <label> Description
-    <input type="text" name="description" ng-model="gist.description">
-  </label>
-  <fieldset id="fileSet"><!-- model is a gist object with multiple properties -->
-    <label> Filename:
-      <input type="text" name="filename" ng-model="gist.files[0].title">
+  <!-- Github requires ALL fields to be populated! -->
+  <form name="addGist" ng-submit="editor.addGist(location, gist);">
+    <label> Description
+      <input type="text" name="description" ng-model="gist.description" required>
     </label>
-    <label> Content:
-      <input type="text" name="content" ng-model="gist.files[0].content">
-    </label>
-  </fieldset>
+    <span class="error" ng-show="addGist.description.$error.required">(Required)</span>
+    <fieldset id="fileSet"><!-- model is a gist object with multiple properties -->
+      <label>Filename:
+        <input type="text" name="filename" ng-model="gist.files[0].title" required>
+      </label>
+      <span class="error" ng-show="addGist.filename.$error.required">(Required)</span>
+      <label> Content:
+        <input type="text" name="content" ng-model="gist.files[0].content" required>
+      </label>
+      <span class="error" ng-show="addGist.content.$error.required">(Required)</span>
+      <br>
+    </fieldset>
     <button type="button" ng-click="editor.addFileInput();">Add File</button>
-    <button type="submit" ng-click="editor.addGist(gist);">Add Gist</button>
+    <button type="submit">Add Gist</button>
+  </form>
 </div>

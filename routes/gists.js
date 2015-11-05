@@ -15,7 +15,7 @@ router.post('/', getAuthBearerToken, (req, res) => {
     body: {
       public: true,
       description: req.body.description,
-      files: JSON.parse(req.body.files)   // files is a json string;
+      files: req.body.files
     }
   },
   (err, response, body) => {
@@ -34,7 +34,7 @@ router.patch('/:id', getAuthBearerToken, (req, res) => {
     body : {
       public: true,
       description : req.body.description,
-      files: JSON.parse(req.body.files)   // files is a json string;
+      files: req.body.files
     }
   },
   (err, response, body) => {
@@ -60,7 +60,6 @@ router.get('/:id', getAuthBearerToken, (req, res) => {
 
 // GET all user's gists
 router.get('/', getAuthBearerToken, (req, res) => {
-  console.log('in express get()');
   request.get({
     json: true,
     url: GITHUB,

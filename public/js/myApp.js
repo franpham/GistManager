@@ -1,14 +1,13 @@
-/**
- * Creation of a modules uses a 2nd array argument to import dependecies
- */
+"use strict";
 
-// tell angular you want to use myApp;
+// Create myApp module; use a 2nd array argument to import dependencies;
 angular.module('myApp', [
   'ngRoute',
   'ngStorage'
 ]);
 var myApp = angular.module('myApp');
 
+// PER ANGULAR: A path should always begin with forward slash;
 myApp.config(function($routeProvider) {
   $routeProvider
     .when('/', {
@@ -32,6 +31,10 @@ myApp.config(function($routeProvider) {
     .when('/add', {
       templateUrl : 'views/add-gist.html',
       controller : 'AddController'
+    })
+    .when('/update', {
+      templateUrl : 'views/show-gist.html',
+      controller : 'UpdateController'
     })
     .when('/edit/:id', {
       templateUrl : 'views/edit-gist.html',

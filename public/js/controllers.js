@@ -7,7 +7,7 @@ angular.module('myApp')
       $scope.access_token = $route.current.params.token;
       $localStorage.access_token = $route.current.params.token;
       console.log($scope.access_token);
-      $location.path('list').replace();   // redirect to 'list';
+      $location.path('/list').replace();   // redirect to 'list';
     }
   ]);
 
@@ -18,8 +18,8 @@ angular.module('myApp')
       GistServer.listGists().success(function(gists) {
         for (var i = 0; i < gists.length; i++) {
           var gist = gists[i];
-          var files = Object.keys(gist.files);
-          gist.title = files.length > 0 ? files[0] : gist.id;
+          var files = gist.files ? Object.keys(gist.files) : [gist.id];
+          gist.title = files[0];
         }
         $scope.gists = gists;
       });
@@ -32,32 +32,63 @@ angular.module('myApp')
       $scope.gist = null;
       GistServer.showGist($route.current.params.id).success(function(gist) {
         $scope.gist = gist;
-        $scope.files = gist.files;
-
-        var files = Object.keys(gist.files);
-        gist.title = files.length > 0 ? files[0] : gist.id;
+        if (gist.files) {
+          $scope.files = gist.files;
+          var files = Object.keys(gist.files);
+          gist.title = files[0];
+        }
+        else {
+          $scope.files = {};
+          gist.title = gist.id;
+        }
       });
     }
   ]);
 
 angular.module('myApp')
-  .controller('AddController', ['$scope', 'GistServer',
-    function($scope, GistServer) {
-      $scope.editor = GistServer;
-    }
-  ]);
-
-angular.module('myApp')
-  .controller('EditController', ['$scope', '$route', 'GistServer',
-    function($scope, $route, GistServer) {
+  .controller('EditController', ['$scope', '$route', '$location', 'GistServer',
+    function($scope, $route, $location, GistServer) {
       $scope.gist = null;     // must declare gist since GistServer methods are promises;
-      $scope.editor = GistServer;
-
       GistServer.showGist($route.current.params.id).success(function(gist) {
         $scope.gist = gist;
-        $scope.files = gist.files;
-        var files = Object.keys(gist.files);
-        gist.title = files.length > 0 ? files[0] : gist.id;
+        $scope.editor = GistServer;
+        $scope.location = $location;
+        if (gist.files) {
+          $scope.files = gist.files;
+          var files = Object.keys(gist.files);
+          gist.title = files[0];
+        }
+        else {
+          $scope.files = {};
+          gist.title = gist.id;
+        }
       });
+    }
+  ]);
+
+angular.module('myApp')
+  .controller('UpdateController', ['$scope', 'GistServer',
+    function($scope, GistServer) {
+      $scope.gist = null;
+      GistServer.getGistPromise().success(function(gist) {
+        $scope.gist = gist;
+        if (gist.files) {
+          $scope.files = gist.files;
+          var files = Object.keys(gist.files);
+          gist.title = files[0];
+        }
+        else {
+          $scope.files = {};
+          gist.title = gist.id;
+        }
+      });
+    }
+  ]);
+
+angular.module('myApp')
+  .controller('AddController', ['$scope', '$location', 'GistServer',
+    function($scope, $location, GistServer) {
+      $scope.editor = GistServer;
+      $scope.location = $location;
     }
   ]);
