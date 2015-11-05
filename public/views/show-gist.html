@@ -1,22 +1,15 @@
 <div>
   <h2>
-    Gist: {{ gist.id }}
+    Gist: {{ gist.title }}
   </h2>
   <li class="showGists">
     <p class="gist_description"> {{ gist.description }}</p>
-    <ul class="gist_files">Files:
-      <li ng-repeat="title in titles">
-        title
+    <ul>
+      <li ng-repeat="(title, file) in files">
+        {{ title }} :
+        <div>{{ file.content }}</div>
       </li>
     </ul>
-    <div ng-repeat="(file, index) in files">
-      <label> Filename
-        <input type="text" name="filename" value="{{ filename }}" ng-model="file_{{ index }}">
-      </label>
-      <label> Content
-        <input type="text" name="content" value="{{ gist.content }}">
-      </label>
-    </div>
     <a href="{{ gist.html_url }}">View on Github</a>
     <a href="/#/edit/{{ gist.id }}">Edit Gist</a>
     <a href="gists/delete/{{ gist.id }}">Delete Gist</a>

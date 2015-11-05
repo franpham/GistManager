@@ -1,0 +1,20 @@
+<div>
+  <h2>
+    Add A Gist:
+  </h2>
+  <form id="addForm", method="POST", action="/gists/">
+    <label> Description
+      <input type="text" name="description">
+    </label>
+    <fieldset id="files">
+      <label> Filename
+        <input type="text" name="filename" value="{{ title }}" ng-model="filename_{{ $index }}">
+      </label>
+      <label> Content
+        <input type="text" name="content" value="{{ file.content }}" ng-model="content_{{ $index }}">
+      </label>
+    </fieldset>
+    <button type="button">Add File</button>
+    <button type="submit">Add Gist</button>
+  </form>
+</div>

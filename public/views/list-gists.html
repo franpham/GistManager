@@ -5,10 +5,10 @@
   <ul class="listGists">
   <li ng-repeat="gist in gists">
     <h4 class="gistTitle">
-      <a href="/#/show/{{ gist.id }}">{{ gist.id }}</a>
+      <a href="/#/show/{{ gist.id }}">{{ gist.title }}</a>
     </h4>
     <p class="gist_comments">
-      <a href="{{ gist.comments_url }}">Comments: {{ gist.comments }}</a>
+      <a href="{{ gist.html_url }}">Comments: {{ gist.comments }}</a>
     </p>
   </li>
 </div>

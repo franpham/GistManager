@@ -1,21 +1,19 @@
 <div>
   <h2>
-    Create/ Edit Gist
+    Edit Gist: {{ gist.id }}
   </h2>
-    <form id="editForm", method="POST", action="/gists/{{ gist.id }}">
-      <input type="hidden", name="_method", value= "{{ method }}">
-      <label> Description
-        <input type="text" name="description" value="{{ gist.description }}">
+  <fieldset><!-- model is a gist object with multiple properties -->
+  <label> Description
+    <input type="text" name="description" value="{{ gist.description }}" ng-model="gist.description">
+  </label>
+    <div ng-repeat="(title, file) in files">
+      <label> Filename
+        <input type="text" name="filename" value="{{ title }}" ng-model="gist.filename_{{ $index }}">
       </label>
-      <div ng-repeat="(file, index) in files">
-        <label> Filename
-          <input type="text" name="filename" value="{{ filename }}" ng-model="file_{{ index }}">
-        </label>
-        <label> Content
-          <input type="text" name="content" value="{{ gist.content }}">
-        </label>
-      </div>
-      <button type="submit">Update</button>
-    </form>
-  </li>
+      <label> Content
+        <input type="text" name="content" value="{{ file.content }}" ng-model="gist.content_{{ $index }}">
+      </label>
+    </div>
+  </fieldset>
+  <button type="submit" ng-click="editor.editGist(gist);">Update Gist</button>
 </div>

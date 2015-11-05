@@ -30,8 +30,8 @@ myApp.config(function($routeProvider) {
       controller : 'ShowController'
     })
     .when('/create', {
-      templateUrl : 'views/edit-gist.html',
-      controller : 'CreateController'
+      templateUrl : 'views/add-gist.html',
+      controller : 'AddController'
     })
     .when('/edit/:id', {
       templateUrl : 'views/edit-gist.html',

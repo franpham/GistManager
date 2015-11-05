@@ -39,9 +39,7 @@ router.get('/github/callback', (req, res) => {
     return res.status(401).json({ error : 401, message : 'Invalid auth code' });
   }
   oauth2.getOAuthAccessToken(
-    code, {
-      redirect_uri : 'http://localhost:3000/auth/github/callback'
-    },
+    code, {},       // redirect_uri: 'http://localhost:3000/auth/github/callback'
     (err, access_token, refresh_token, results) => {
       var error = err || results.error;
       if (error) {

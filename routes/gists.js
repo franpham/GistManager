@@ -3,7 +3,7 @@
 var request = require('request');
 var express = require('express');
 var router = express.Router();
-var GITHUB = 'https://api.github.com/gists/';
+var GITHUB = 'https://api.github.com/gists';    // DO NOT add trailing slash!
 
 // POST (create) a Gist
 // Step 4: create route to post new object; Bearer Access Token is stored in the header as: Authorization : Bearer access_token
@@ -29,7 +29,7 @@ router.post('/', getAuthBearerToken, (req, res) => {
 router.patch('/:id', getAuthBearerToken, (req, res) => {
   request.patch({
     json : true,
-    url : GITHUB + req.params.id,
+    url : GITHUB + '/' + req.params.id,
     headers : { Authorization : 'Bearer ' + req.access_token, 'User-Agent' : 'gist-manager' },
     body : {
       public: true,
@@ -48,7 +48,7 @@ router.patch('/:id', getAuthBearerToken, (req, res) => {
 router.get('/:id', getAuthBearerToken, (req, res) => {
   request.get({
     json: true,
-    url: GITHUB + req.params.id,
+    url: GITHUB + '/' + req.params.id,
     headers: { Authorization: 'Bearer ' + req.access_token, 'User-Agent': 'gist-manager' }
   },
   (err, response, body) => {
@@ -60,6 +60,7 @@ router.get('/:id', getAuthBearerToken, (req, res) => {
 
 // GET all user's gists
 router.get('/', getAuthBearerToken, (req, res) => {
+  console.log('in express get()');
   request.get({
     json: true,
     url: GITHUB,
@@ -75,7 +76,7 @@ router.get('/', getAuthBearerToken, (req, res) => {
 // DELETE a Gist
 router.delete('/:id', getAuthBearerToken, (req, res) => {
   request.del({
-    url : GITHUB + req.params.id,
+    url : GITHUB + '/' + req.params.id,
     headers : { Authorization : 'Bearer ' + req.access_token, 'User-Agent' : 'gist-manager' }
   },
   (err, response, body) => {

@@ -1,5 +1,5 @@
 "use strict";
-var GISTURL = "http://localhost:3000/gists/";
+var GISTURL = "http://localhost:3000/gists";    // DO NOT ADD TRAILING SLASH!
 
 angular.module('myApp')
   .provider('GistServer', function() {
@@ -11,22 +11,22 @@ angular.module('myApp')
           });
         },
         showGist : function(id) {
-          return $http.get(GISTURL + id, { headers :
+          return $http.get(GISTURL + '/' + id, { headers :
             { Authorization : 'token ' + $localStorage.access_token }
           });
         },
         deleteGist: function(id) {
-          return $http.delete(GISTURL + id, { headers :
+          return $http.delete(GISTURL + '/' + id, { headers :
             { Authorization : 'token ' + $localStorage.access_token }
           });
         },
-        createGist : function(json) {
+        addGist : function(json) {
           return $http.post(GISTURL, json,
             { headers : { Authorization : 'token ' + $localStorage.access_token }}
           );
         },
         editGist: function(id, json) {
-          return $http.patch(GISTURL + id, json,
+          return $http.patch(GISTURL + '/' + id, json,
             { headers : { Authorization : 'token ' + $localStorage.access_token }}
           );
         },
