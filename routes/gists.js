@@ -5,8 +5,8 @@ var express = require('express');
 var router = express.Router();
 var GITHUB = 'https://api.github.com/gists';    // DO NOT add trailing slash!
 
-// POST (create) a Gist
-// Step 4: create route to post new object; Bearer Access Token is stored in the header as: Authorization : Bearer access_token
+// POST (add) a Gist
+// Step 4: define route to post new object; Bearer Access Token is stored in the header as: Authorization : Bearer access_token
 router.post('/', getAuthBearerToken, (req, res) => {
   request.post({
     json: true,

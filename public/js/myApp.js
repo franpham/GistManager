@@ -29,7 +29,7 @@ myApp.config(function($routeProvider) {
       templateUrl : 'views/show-gist.html',
       controller : 'ShowController'
     })
-    .when('/create', {
+    .when('/add', {
       templateUrl : 'views/add-gist.html',
       controller : 'AddController'
     })

@@ -43,6 +43,7 @@ angular.module('myApp')
 angular.module('myApp')
   .controller('AddController', ['$scope', 'GistServer',
     function($scope, GistServer) {
+      $scope.editor = GistServer;
     }
   ]);
 
@@ -55,6 +56,8 @@ angular.module('myApp')
       GistServer.showGist($route.current.params.id).success(function(gist) {
         $scope.gist = gist;
         $scope.files = gist.files;
+        var files = Object.keys(gist.files);
+        gist.title = files.length > 0 ? files[0] : gist.id;
       });
     }
   ]);

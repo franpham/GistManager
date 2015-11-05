@@ -1,16 +1,16 @@
 <div>
   <h2>
-    Edit Gist: {{ gist.id }}
+    Edit Gist: {{ gist.title }}
   </h2>
-  <fieldset><!-- model is a gist object with multiple properties -->
   <label> Description
     <input type="text" name="description" value="{{ gist.description }}" ng-model="gist.description">
   </label>
+  <fieldset><!-- model is a gist object with multiple properties -->
     <div ng-repeat="(title, file) in files">
-      <label> Filename
+      <label> Filename:
         <input type="text" name="filename" value="{{ title }}" ng-model="gist.files[{{ $index }}].title">
       </label>
-      <label> Content
+      <label> Content:
         <input type="text" name="content" value="{{ file.content }}" ng-model="gist.files[{{ $index }}].content">
       </label>
     </div>

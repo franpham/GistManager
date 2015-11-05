@@ -2,17 +2,17 @@
   <h2>
     Add A Gist:
   </h2>
-    <label> Description
-      <input type="text" name="description">
+  <label> Description
+    <input type="text" name="description" ng-model="gist.description">
+  </label>
+  <fieldset id="fileSet"><!-- model is a gist object with multiple properties -->
+    <label> Filename:
+      <input type="text" name="filename" ng-model="gist.files[0].title">
     </label>
-    <fieldset id="files">
-      <label> Filename
-        <input type="text" name="filename" ng-model="gist.files[{{ $index }}].title">
-      </label>
-      <label> Content
-        <input type="text" name="content" ng-model="gist.files[{{ $index }}].content">
-      </label>
-    </fieldset>
-    <button type="button">Add File</button>
-    <button type="submit" ng-click="">Add Gist</button>
+    <label> Content:
+      <input type="text" name="content" ng-model="gist.files[0].content">
+    </label>
+  </fieldset>
+    <button type="button" ng-click="editor.addFileInput();">Add File</button>
+    <button type="submit" ng-click="editor.addGist(gist);">Add Gist</button>
 </div>
