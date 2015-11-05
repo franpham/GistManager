@@ -15,7 +15,7 @@ angular.module('myApp')
             { Authorization : 'token ' + $localStorage.access_token }
           });
         },
-        deleteGist: function(id) {
+        deleteGist : function(id) {
           return $http.delete(GISTURL + '/' + id, { headers :
             { Authorization : 'token ' + $localStorage.access_token }
           });
@@ -25,12 +25,18 @@ angular.module('myApp')
             { headers : { Authorization : 'token ' + $localStorage.access_token }}
           );
         },
-        editGist: function(id, json) {
-          return $http.patch(GISTURL + '/' + id, json,
+        editGist : function(id, gist) {
+          var fileObj = {};
+          var inputs = Object.keys(gist.files);
+          for (var i = 0; i < inputs.length; i++) {
+            var input = gist.files[inputs[i]];
+            fileObj[input.title] = { content : input.content };
+          }
+          var json = { files : fileObj, _method : 'PATCH', description : gist.description };
+          return $http.patch(GISTURL + '/' + id, JSON.stringify(json),          // MUST CONVERT object to string;
             { headers : { Authorization : 'token ' + $localStorage.access_token }}
           );
-        },
-
+        }
       };
     }];
   });

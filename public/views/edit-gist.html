@@ -8,12 +8,12 @@
   </label>
     <div ng-repeat="(title, file) in files">
       <label> Filename
-        <input type="text" name="filename" value="{{ title }}" ng-model="gist.filename_{{ $index }}">
+        <input type="text" name="filename" value="{{ title }}" ng-model="gist.files[{{ $index }}].title">
       </label>
       <label> Content
-        <input type="text" name="content" value="{{ file.content }}" ng-model="gist.content_{{ $index }}">
+        <input type="text" name="content" value="{{ file.content }}" ng-model="gist.files[{{ $index }}].content">
       </label>
     </div>
   </fieldset>
-  <button type="submit" ng-click="editor.editGist(gist);">Update Gist</button>
+  <button type="submit" ng-click="editor.editGist(gist.id, gist);">Update Gist</button>
 </div>

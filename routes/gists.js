@@ -15,7 +15,7 @@ router.post('/', getAuthBearerToken, (req, res) => {
     body: {
       public: true,
       description: req.body.description,
-      files: JSON.parse(req.body.files)
+      files: JSON.parse(req.body.files)   // files is a json string;
     }
   },
   (err, response, body) => {
@@ -34,7 +34,7 @@ router.patch('/:id', getAuthBearerToken, (req, res) => {
     body : {
       public: true,
       description : req.body.description,
-      files: JSON.parse(req.body.files)
+      files: JSON.parse(req.body.files)   // files is a json string;
     }
   },
   (err, response, body) => {

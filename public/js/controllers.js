@@ -49,7 +49,7 @@ angular.module('myApp')
 angular.module('myApp')
   .controller('EditController', ['$scope', '$route', 'GistServer',
     function($scope, $route, GistServer) {
-      $scope.gist = null;
+      $scope.gist = null;     // must declare gist since GistServer methods are promises;
       $scope.editor = GistServer;
 
       GistServer.showGist($route.current.params.id).success(function(gist) {
